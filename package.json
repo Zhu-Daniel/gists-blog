@@ -1,6 +1,6 @@
 {
   "name": "gists-blog",
-  "homepage": "https://zhu-daniel.github.io/gists-blog/",
+  "homepage": "https://zhu-daniel.github.io/gists-blog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
