@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gists-blog/static/css/main.037286f1.css",
-    "main.js": "/gists-blog/static/js/main.1ce39e85.js",
+    "main.js": "/gists-blog/static/js/main.dbd46311.js",
     "index.html": "/gists-blog/index.html",
     "main.037286f1.css.map": "/gists-blog/static/css/main.037286f1.css.map",
-    "main.1ce39e85.js.map": "/gists-blog/static/js/main.1ce39e85.js.map"
+    "main.dbd46311.js.map": "/gists-blog/static/js/main.dbd46311.js.map"
   },
   "entrypoints": [
     "static/css/main.037286f1.css",
-    "static/js/main.1ce39e85.js"
+    "static/js/main.dbd46311.js"
   ]
 }
