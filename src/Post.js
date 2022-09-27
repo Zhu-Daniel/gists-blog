@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import base64 from "base-64";
 import snapshot from "./snapshot";
-import Comments from "./Comments";
+import Comments from "./Comment";
 
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 const headers = {
