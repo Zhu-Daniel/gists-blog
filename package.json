@@ -7,11 +7,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "base-64": "^1.0.0",
     "gh-pages": "^4.0.0",
     "github-markdown-css": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-loadable": "^5.5.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "react-snap": "^1.23.0",
@@ -22,13 +24,13 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && react-snap",
+    "postbuild": "sed -i '' 's/<link href=\"[^ ]*\" rel=\"preload\" as=\"script\">//g' $(find ./build -iname *.html)",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "reactSnap": {
     "waitFor": 1000,
-    "preconnectThirdParty": false,
-    "removeScriptTags": true
+    "preconnectThirdParty": false
   },
   "eslintConfig": {
     "extends": [
