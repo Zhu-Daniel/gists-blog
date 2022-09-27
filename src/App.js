@@ -11,7 +11,7 @@ export default () => (
   <Fragment>
     <Helmet titleTemplate="%s | My Blog" />
   
-    <HashRouter basename={process.env.REACT_APP_BASENAME}>
+    <Router basename={process.env.REACT_APP_BASENAME}>
       <Routes>
         <Route exact path="/" render={routeProps => <Posts {...data} />} />
 
@@ -26,6 +26,6 @@ export default () => (
 
         <Route render={routeProps => <NotFound />} />
       </Routes>
-    </HashRouter>
+    </Router>
   </Fragment>
 );
