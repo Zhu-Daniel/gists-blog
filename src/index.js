@@ -11,6 +11,12 @@ const LoadableApp = Loadable({
   loading: () => <div>Loading…</div>,
 });
 
+
+const LoadableComments = Loadable({
+  loader: () => import("./Comments"),
+  loading: () => <div>Loading…</div>,
+});
+
 if (snapshot || !production) {
   const el = document.getElementById("root");
   ReactDOM.render(<LoadableApp />, el);
