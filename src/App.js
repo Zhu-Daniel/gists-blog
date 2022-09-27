@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Posts from "./Posts";
+import Post from "./Post";
+import NotFound from "./NotFound";
+import data from "./data";
 
-export default App;
+export default () => (
+  <Fragment>
+    <Helmet titleTemplate="%s | My Blog" />
+  
+    <Router basename={process.env.REACT_APP_BASENAME}>
+      <Routes>
+        <Route exact path="/" render={routeProps => <Posts {...data} />} />
+
+        {Object.entries(data.posts).map(([slug, post]) => (
+          <Route 
+            key={slug}
+            exact
+            path={`/${slug}`}
+            render={({ match }) => <Post {...post} />}
+          />
+        ))}
+
+        <Route render={routeProps => <NotFound />} />
+      </Routes>
+    </Router>
+  </Fragment>
+);
