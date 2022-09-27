@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import Posts from "./Posts";
@@ -11,7 +11,7 @@ export default () => (
   <Fragment>
     <Helmet titleTemplate="%s | My Blog" />
   
-    <Router basename={process.env.REACT_APP_BASENAME}>
+    <HashRouter basename={process.env.REACT_APP_BASENAME}>
       <Routes>
         <Route exact path="/" render={routeProps => <Posts {...data} />} />
 
@@ -26,6 +26,6 @@ export default () => (
 
         <Route render={routeProps => <NotFound />} />
       </Routes>
-    </Router>
+    </HashRouter>
   </Fragment>
 );
