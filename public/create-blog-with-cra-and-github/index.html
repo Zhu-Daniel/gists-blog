@@ -20,7 +20,7 @@ npm start</pre></div><p>The app should now be running. Let's remove some of the 
 <span class="pl-k">export default</span> () <span class="pl-k">=></span> &lt;<span class="pl-ent">div</span> />;</pre></div><div></div><h2><a id="user-content-step-2-add-a-router-and-some-basic-components" class="anchor" href="#step-2-add-a-router-and-some-basic-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2: Add a router and some basic components</h2><p>Now we <code>npm install react-router-dom</code> so that we can have multiple pages. We will have one for the post listing and one per post.</p><div class="highlight highlight-source-js-jsx"><pre><span class="pl-c"><span class="pl-c">/*</span> App.js<span class="pl-c"> */</span></span>
 
 <span class="pl-k">import</span><span class="pl-smi"> React</span><span class="pl-k"> from</span> <span class="pl-s"><span class="pl-pds">"</span>react<span class="pl-pds">"</span></span>;
-<span class="pl-k">import</span> {<span class="pl-smi"> BrowserRouter</span><span class="pl-k"> as</span><span class="pl-smi"> Router</span>,<span class="pl-smi"> Route</span>,<span class="pl-smi"> Switch</span> }<span class="pl-k"> from</span> <span class="pl-s"><span class="pl-pds">"</span>react-router-dom<span class="pl-pds">"</span></span>;
+<span class="pl-k">import</span> {<span class="pl-smi"> HashRouter</span><span class="pl-k"> as</span><span class="pl-smi"> Router</span>,<span class="pl-smi"> Route</span>,<span class="pl-smi"> Routes</span> }<span class="pl-k"> from</span> <span class="pl-s"><span class="pl-pds">"</span>react-router-dom<span class="pl-pds">"</span></span>;
 
 <span class="pl-k">import</span><span class="pl-smi"> Posts</span><span class="pl-k"> from</span> <span class="pl-s"><span class="pl-pds">"</span>./Posts<span class="pl-pds">"</span></span>;
 <span class="pl-k">import</span><span class="pl-smi"> Post</span><span class="pl-k"> from</span> <span class="pl-s"><span class="pl-pds">"</span>./Post<span class="pl-pds">"</span></span>;
@@ -29,7 +29,7 @@ npm start</pre></div><p>The app should now be running. Let's remove some of the 
 
 <span class="pl-k">export default</span> () <span class="pl-k">=></span> (
   &lt;<span class="pl-ent"><span class="pl-c1">Router</span></span>>
-    &lt;<span class="pl-ent"><span class="pl-c1">Switch</span></span>>
+    &lt;<span class="pl-ent"><span class="pl-c1">Routes</span></span>>
       &lt;<span class="pl-ent"><span class="pl-c1">Route</span></span> <span class="pl-e">exact</span> <span class="pl-e">path</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span> <span class="pl-e">render</span><span class="pl-k">=</span><span class="pl-pse">{</span><span class="pl-s1"><span class="pl-smi">routeProps</span> <span class="pl-k">=></span> &lt;<span class="pl-ent"><span class="pl-c1">Posts</span></span> <span class="pl-pse">{</span><span class="pl-s1"><span class="pl-k">...</span><span class="pl-smi">data</span></span><span class="pl-pse">}</span> /></span><span class="pl-pse">}</span> />
 
       <span class="pl-pse">{</span><span class="pl-s1"><span class="pl-c1">Object</span><span class="pl-k">.</span><span class="pl-en">entries</span>(<span class="pl-smi">data</span><span class="pl-k">.</span><span class="pl-smi">posts</span>)<span class="pl-k">.</span><span class="pl-en">map</span>(([<span class="pl-smi">slug</span>,<span class="pl-smi"> post</span>]) <span class="pl-k">=></span> (</span>
@@ -42,7 +42,7 @@ npm start</pre></div><p>The app should now be running. Let's remove some of the 
 <span class="pl-s1">      ))</span><span class="pl-pse">}</span>
 
       &lt;<span class="pl-ent"><span class="pl-c1">Route</span></span> <span class="pl-e">render</span><span class="pl-k">=</span><span class="pl-pse">{</span><span class="pl-s1"><span class="pl-smi">routeProps</span> <span class="pl-k">=></span> &lt;<span class="pl-ent"><span class="pl-c1">NotFound</span></span> /></span><span class="pl-pse">}</span> />
-    &lt;/<span class="pl-ent"><span class="pl-c1">Switch</span></span>>
+    &lt;/<span class="pl-ent"><span class="pl-c1">Routes</span></span>>
   &lt;/<span class="pl-ent"><span class="pl-c1">Router</span></span>>
 );</pre></div><div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">/*</span> data.js <span class="pl-c">*/</span></span>
 
@@ -110,7 +110,7 @@ npm start</pre></div><p>The app should now be running. Let's remove some of the 
 
 <span class="pl-md"><span class="pl-md">-</span>import React from "react";</span>
 <span class="pl-mi1"><span class="pl-mi1">+</span>import React, { Fragment } from "react";</span>
- import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 <span class="pl-mi1"><span class="pl-mi1">+</span>import { Helmet } from "react-helmet";</span>
 
  import Posts from "./Posts";
@@ -123,11 +123,11 @@ npm start</pre></div><p>The app should now be running. Let's remove some of the 
 <span class="pl-mi1"><span class="pl-mi1">+</span>    &lt;Helmet titleTemplate="%s | My Blog" /></span>
 <span class="pl-mi1"><span class="pl-mi1">+</span></span>
      &lt;Router>
-       &lt;Switch>
+       &lt;Routes>
          &lt;Route exact path="/" render={routeProps => &lt;Posts {...data} />} />
          ...
          &lt;Route render={routeProps => &lt;NotFound {...data} />} />
-       &lt;/Switch>
+       &lt;/Routes>
      &lt;/Router>
 <span class="pl-mi1"><span class="pl-mi1">+</span>  &lt;/Fragment></span>
  );</pre></div><div class="highlight highlight-source-diff"><pre><span class="pl-c"><span class="pl-c">#</span> NotFound.js</span>
@@ -280,7 +280,7 @@ REACT_APP_BASENAME=<span class="pl-s"><span class="pl-pds">"</span>/my-blog<span
  
 <span class="pl-md"><span class="pl-md">-</span>  &lt;Router></span>
 <span class="pl-mi1"><span class="pl-mi1">+</span>  &lt;Router basename={process.env.REACT_APP_BASENAME}></span>
-     &lt;Switch>
+     &lt;Routes>
        &lt;Route exact path="/" render={routeProps => &lt;Posts {...data} />} /></pre></div><p>Execute <code>npm run deploy</code> and your blog should now be live.</p><div></div><h2><a id="user-content-step-6-pre-rendering-with-react-snap" class="anchor" href="#step-6-pre-rendering-with-react-snap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 6: Pre-rendering with React Snap</h2><p>It's time to address the limitations stated in the beginning of this post. There is an interesting project called React Snap that uses Puppeteer, a headless Chrome by the Google Chrome team, to pre-render an app like this into static HTML files.</p><p>Let's <code>npm install react-snap</code> and update our <code>package.json</code>:</p><div class="highlight highlight-source-diff"><pre>// package.json
 
      "react-router-dom": "^4.2.2",
